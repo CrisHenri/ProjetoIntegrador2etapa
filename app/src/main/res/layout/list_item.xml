@@ -8,13 +8,13 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="100sp"
-        android:layout_height="50sp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@mipmap/ic_launcher_round" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
 
@@ -30,5 +30,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Partido" />
+
+        <TextView
+            android:id="@+id/txtUf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Uf" />
     </LinearLayout>
 </LinearLayout>

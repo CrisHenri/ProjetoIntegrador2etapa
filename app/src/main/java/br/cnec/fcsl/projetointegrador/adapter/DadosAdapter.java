@@ -48,10 +48,12 @@ public class DadosAdapter extends BaseAdapter {
 
         TextView txtNome = view.findViewById(R.id.txtNome);
         TextView txtPartido = view.findViewById(R.id.txtPartido);
+        TextView txtUf = view.findViewById(R.id.txtUf);
         ImageView imageView = view.findViewById(R.id.imageView);
 
         txtNome.setText(deputado.getNome());
         txtPartido.setText(deputado.getSiglaPartido());
+        txtUf.setText(deputado.getSiglaUf());
 
         //usando biblioteca picasso
         Picasso.get().load(deputado.getUrlFoto()).into(imageView);

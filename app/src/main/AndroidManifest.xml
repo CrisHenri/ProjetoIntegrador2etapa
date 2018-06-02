@@ -22,7 +22,8 @@
         <activity android:name=".DeputadosPartido" />
         <activity android:name=".ListaDePartidos" />
         <activity android:name=".ListaDeTodosDeputados" />
-        <activity android:name=".TelaInicial"></activity>
+        <activity android:name=".TelaInicial" />
+        <activity android:name=".InfoDeputadoActivity"></activity>
     </application>
 
 </manifest>

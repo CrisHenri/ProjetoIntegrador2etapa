@@ -1,5 +1,6 @@
 package br.cnec.fcsl.projetointegrador;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ListActivity extends AppCompatActivity {
     private List<Dados> dados;
     private ListView listView;
+    private int page = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,10 @@ public class ListActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Dados dado = dados.get(position);
+                Intent intentInfo = new Intent(ListActivity.this, InfoDeputadoActivity.class);
+                intentInfo.putExtra("dado", dado);
+                startActivity(intentInfo);
             }
         });
     }
@@ -43,16 +48,16 @@ public class ListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        carregarListaRest();
+        carregarListaRest(page);
     }
 
-    private void carregarListaRest() {
+    private void carregarListaRest(int pagina) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(DadosService.URL_BASE)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         DadosService dadosService = retrofit.create(DadosService.class);
-        Call<DadosResponse> request = dadosService.listarDeputados();
+        Call<DadosResponse> request = dadosService.listarDeputados(pagina);
         request.enqueue(new Callback<DadosResponse>() {
             @Override
             public void onResponse(Call<DadosResponse> call, Response<DadosResponse> response) {
@@ -73,5 +78,19 @@ public class ListActivity extends AppCompatActivity {
                 Log.e("service", "Erro: " + t.getMessage());
             }
         });
+    }
+
+    public void next(View view) {
+        page++;
+        if(page <= 35){
+           carregarListaRest(page);
+        }
+    }
+
+    public void previous(View view) {
+        page--;
+        if(page >= 1){
+            carregarListaRest(page);
+        }
     }
 }
