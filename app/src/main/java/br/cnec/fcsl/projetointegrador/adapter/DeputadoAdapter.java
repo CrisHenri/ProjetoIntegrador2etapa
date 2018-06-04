@@ -13,40 +13,40 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import br.cnec.fcsl.projetointegrador.R;
-import br.cnec.fcsl.projetointegrador.entidade.Dados;
+import br.cnec.fcsl.projetointegrador.entidade.Deputado;
 
-public class DadosAdapter extends BaseAdapter {
-    private List<Dados> dados;
+public class DeputadoAdapter extends BaseAdapter {
+    private List<Deputado> deputados;
     private Context context;
 
-    public DadosAdapter(Context context, List<Dados> dados) {
+    public DeputadoAdapter(Context context, List<Deputado> deputados) {
         this.context = context;
-        this.dados = dados;
+        this.deputados = deputados;
     }
 
     @Override
     public int getCount() {
-        return dados.size();
+        return deputados.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return dados.get(position);
+        return deputados.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return dados.get(position).getId();
+        return deputados.get(position).getId();
     }
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        Dados deputado = dados.get(position);
+        Deputado deputado = deputados.get(position);
         LayoutInflater inflater = LayoutInflater.from(context);
 
         view = inflater.inflate(R.layout.list_item, null);
 
-        TextView txtNome = view.findViewById(R.id.txtNome);
+        TextView txtNome = view.findViewById(R.id.txt);
         TextView txtPartido = view.findViewById(R.id.txtPartido);
         TextView txtUf = view.findViewById(R.id.txtUf);
         ImageView imageView = view.findViewById(R.id.imageView);

@@ -2,7 +2,8 @@ package br.cnec.fcsl.projetointegrador.entidade;
 
 import java.io.Serializable;
 
-public class Dados implements Serializable {
+public class Deputado implements Serializable {
+
     private Long id;
     private String uri;
     private String nome;
